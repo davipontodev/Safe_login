@@ -19,4 +19,5 @@ Sistema web de autenticação e gerenciamento de usuários desenvolvido com Pyth
 ## Como Executar o Projeto
 
 1. Clone ou baixe este repositório:
-   ```bash git clone https://github.com/davipontodev/Safe_login.git
+   ```bash
+   git clone https://github.com/davipontodev/Safe_login.git
