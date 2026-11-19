@@ -1,5 +1,9 @@
 # Safe Login 🔐
 
+**Site no ar:** https://safe-login-mgu3.onrender.com
+
+> Hospedado no plano gratuito do Render: o primeiro acesso pode levar ~50s, e os cadastros são reiniciados periodicamente. O primeiro usuário cadastrado vira admin.
+
 Sistema web de autenticação e gerenciamento de usuários desenvolvido com Python
 ## Funcionalidades
 
