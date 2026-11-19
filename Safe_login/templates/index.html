@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso ao Sistema</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="layout-box">
+        {% if tela == 'login' %}
+            <div class="painel-preto">
+                <h1>Olá, amigo!</h1>
+                <p>Insira seus dados pessoais e comece sua jornada conosco</p>
+                <a href="{{ url_for('index') }}" class="btn-outline">Cadastrar</a>
+            </div>
+
+            <div class="area-formulario">
+                <h1>Entrar</h1>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-google"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span class="subtexto">ou use sua conta cadastrada:</span>
+
+                <form action="/login" method="POST">
+                    <div class="campo">
+                        <i class="far fa-envelope"></i>
+                        <input type="email" name="email" placeholder="E-mail" required>
+                    </div>
+                    <div class="campo">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="senha" placeholder="Senha" required>
+                    </div>
+                    <button type="submit" class="btn-preto">Entrar</button>
+                </form>
+            </div>
+        {% else %}
+            <div class="painel-preto">
+                <h1>Bem-vindo de volta!</h1>
+                <p>Para se manter conectado conosco, faça login com suas informações pessoais</p>
+                <a href="{{ url_for('tela_login') }}" class="btn-outline">Entrar</a>
+            </div>
+
+            <div class="area-formulario">
+                <h1>Criar Conta</h1>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-google"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span class="subtexto">ou use seu e-mail para se registrar:</span>
+
+                <form action="/cadastrar" method="POST">
+                    <div class="campo">
+                        <i class="far fa-user"></i>
+                        <input type="text" name="nome" placeholder="Nome" required>
+                    </div>
+                    <div class="campo">
+                        <i class="far fa-envelope"></i>
+                        <input type="email" name="email" placeholder="E-mail" required>
+                    </div>
+                    <div class="campo">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="senha" placeholder="Senha" required>
+                    </div>
+                    <button type="submit" class="btn-preto">Cadastrar</button>
+                </form>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

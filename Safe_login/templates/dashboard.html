@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Área Logada</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="card">
+        <div class="header">
+            <div>
+                <h2>Bem-vindo, {{ session['user_name'] }}!</h2>
+                <span style="color: #666666; font-size: 13px;">{{ session['user_email'] }}</span>
+                <span class="badge">{{ session['user_role'] }}</span>
+            </div>
+            <a href="/logout" class="btn-sair">Sair</a>
+        </div>
+
+        {% if session['user_role'] == 'admin' %}
+            <h3>Usuários Cadastrados (Admin)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Perfil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for u in usuarios %}
+                    <tr>
+                        <td>{{ u['id'] }}</td>
+                        <td>{{ u['name'] }}</td>
+                        <td>{{ u['email'] }}</td>
+                        <td><strong>{{ u['role'] }}</strong></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+</body>
+</html>
